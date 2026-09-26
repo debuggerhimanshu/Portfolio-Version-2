@@ -1,11 +1,24 @@
 @import "tailwindcss";
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root {
-  --bg: #0d0d0d;
-  --text: #f5f5f5;
-  --muted: #888;
-  --border: #2a2a2a;
+  --background: #0d0d0d;
+  --foreground: #f3f3f3;
+
+  --muted: #858585;
+  --dim: #555555;
+
+  --border: rgba(255, 255, 255, 0.14);
+  --border-hover: rgba(255, 255, 255, 0.35);
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
   box-sizing: border-box;
@@ -17,9 +30,18 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
+
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -31,9 +53,20 @@ button {
   font: inherit;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   BOOT SCREEN
+========================================================= */
+
 .boot-screen {
   position: fixed;
   inset: 0;
+
   z-index: 9999;
 
   display: grid;
@@ -45,7 +78,10 @@ button {
 .boot-content {
   width: min(600px, 90%);
 
-  font-family: monospace;
+  font-family:
+    "Courier New",
+    monospace;
+
   font-size: 13px;
   line-height: 1.8;
 
@@ -56,134 +92,1093 @@ button {
   margin: 4px 0;
 }
 
+
+/* =========================================================
+   MAIN PORTFOLIO FRAME
+========================================================= */
+
 .portfolio-frame {
   position: relative;
-  width: 100%;
-  margin: 0;
+
+  width: calc(100% - 32px);
+
+  min-height: 100vh;
+
+  margin: 16px;
+
   overflow: visible;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
 
-  padding: 25px 30px;
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+  position: relative;
+
+  z-index: 20;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1fr;
+
+  align-items: start;
+
+  padding:
+    28px
+    28px
+    0;
 }
+
+
+/* ---------------------------------------------------------
+   BRAND
+--------------------------------------------------------- */
+
+.brand {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1px;
+
+  font-size: 14px;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.02em;
+
+  color: #f0f0f0;
+}
+
+
+/* ---------------------------------------------------------
+   NAV LINKS
+--------------------------------------------------------- */
 
 .nav-links {
   display: flex;
-  gap: 30px;
 
-  font-size: 12px;
-  color: var(--muted);
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 32px;
 }
+
+.nav-links a {
+  font-size: 10px;
+
+  color: #777;
+
+  transition:
+    color 200ms ease;
+}
+
+.nav-links a:hover {
+  color: #f2f2f2;
+}
+
+
+/* ---------------------------------------------------------
+   LANGUAGE
+--------------------------------------------------------- */
 
 .language {
-  font-family: monospace;
-  font-size: 11px;
+  justify-self: end;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  color: #888;
 }
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero {
-  min-height: 850px;
-
-  padding: 80px 40px;
-
-  border-bottom: 1px solid var(--border);
-
   position: relative;
+
+  width: 100%;
+
+  min-height: calc(100vh - 32px);
+
+  padding:
+    0
+    28px
+    28px;
+
+  overflow: visible;
 }
 
-.section-label {
-  font-family: monospace;
+
+/* =========================================================
+   CONTAINER 1
+   Main Hero Composition
+
+   Structure:
+
+   Container 1
+   ├── Container 1.1
+   │   ├── Container 1.1.1 → Fascinated
+   │   └── Container 1.1.2 → Projects
+   │
+   └── Container 1.2
+       ├── Container 1.2.1 → Description
+       └── Container 1.2.2 → Developer
+========================================================= */
+
+.hero-container-1 {
+  width: 100%;
+
+  min-height: 0;
+
+  padding-top: 105px;
+  padding-bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   CONTAINER 1.1
+   Fascinated + Projects
+========================================================= */
+
+.hero-container-1-1 {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   CONTAINER 1.1.1
+   Fascinated
+========================================================= */
+
+.hero-container-1-1-1 {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+}
+
+
+/* =========================================================
+   CONTAINER 1.1.2
+   Projects CTA
+========================================================= */
+
+.hero-container-1-1-2 {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+}
+
+
+/* =========================================================
+   FASCINATED
+========================================================= */
+
+.hero-creative {
+  margin: 0;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(
+      110px,
+      11.2vw,
+      180px
+    );
+
+  font-weight: 400;
+
+  line-height: 0.78;
+
+  letter-spacing: -0.085em;
+
+  color: #f3f3f3;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   PROJECT CTA
+========================================================= */
+
+.hero-project-button {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  margin: 0;
+
+  cursor: pointer;
+
+  text-decoration: none;
+}
+
+
+/* ---------------------------------------------------------
+   Project Pill
+--------------------------------------------------------- */
+
+.hero-project-label {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 165px;
+
+  height: 38px;
+
+  border-radius: 999px;
+
+  background: #f2f2f2;
+
+  color: #151515;
+
   font-size: 11px;
-  color: var(--muted);
+
+  font-style: italic;
+
+  transition:
+    transform 250ms ease;
 }
 
-.hero-title {
-  margin: 100px 0 0;
 
-  font-size: clamp(70px, 12vw, 150px);
-  font-weight: 500;
-  line-height: 0.85;
-  letter-spacing: -0.07em;
+/* ---------------------------------------------------------
+   Arrow
+--------------------------------------------------------- */
+
+.hero-project-arrow {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 38px;
+
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: #f2f2f2;
+
+  color: #151515;
+
+  font-size: 15px;
+
+  transition:
+    transform 250ms ease;
 }
 
-.hero-title span {
-  display: block;
+
+/* ---------------------------------------------------------
+   CTA Hover
+--------------------------------------------------------- */
+
+.hero-project-button:hover
+.hero-project-label {
+  transform:
+    translateX(-3px);
 }
 
-.hero-title span:last-child {
+.hero-project-button:hover
+.hero-project-arrow {
+  transform:
+    translateX(4px);
+}
+
+
+/* =========================================================
+   CONTAINER 1.2
+   Description + Developer
+========================================================= */
+
+.hero-container-1-2 {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  align-items: start;
+
+  margin-top: 28px;
+}
+
+
+/* =========================================================
+   CONTAINER 1.2.1
+   Description
+========================================================= */
+
+.hero-container-1-2-1 {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: flex-start;
+
+  padding-top: 0;
+}
+
+
+/* =========================================================
+   CONTAINER 1.2.2
+   Developer
+========================================================= */
+
+.hero-container-1-2-2 {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: flex-end;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.hero-description {
+  width: min(
+    390px,
+    90%
+  );
+
+  margin: 0;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 16px;
+
+  line-height: 1.45;
+
+  font-weight: 400;
+
+  letter-spacing: -0.015em;
+
+  color: #858585;
+}
+
+.hero-description em {
+  color: #ddd;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   DEVELOPER
+========================================================= */
+
+.hero-developer {
+  margin: 0;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(
+      110px,
+      11.2vw,
+      180px
+    );
+
+  font-weight: 400;
+
+  line-height: 0.78;
+
+  letter-spacing: -0.085em;
+
+  color: #f3f3f3;
+
+  white-space: nowrap;
+
   text-align: right;
 }
 
-.hero-description {
-  max-width: 300px;
 
-  margin-top: 50px;
+/* =========================================================
+   CONTAINER 2
+   SOCIAL LINKS
+========================================================= */
 
-  color: var(--muted);
-  line-height: 1.5;
-}
+.hero-container-2 {
+  width: 100%;
 
-.projects-button {
-  display: inline-block;
-
-  margin-top: 30px;
-
-  padding: 12px 22px;
-
-  border: 1px solid var(--border);
-  border-radius: 999px;
-}
-
-.social-links {
   display: flex;
-  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: center;
+
+  /* Breathing space from Developer and Projects */
+  padding: 58px 0 42px;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+
+/* =========================================================
+   SOCIAL LINKS WRAPPER
+========================================================= */
+
+.hero-container-2 .social-links {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  width: auto;
+
+  flex-wrap: nowrap;
+}
+
+
+/* =========================================================
+   SOCIAL BUTTON
+========================================================= */
+
+.hero-container-2 .scramble-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
   gap: 10px;
 
-  margin-top: 35px;
-}
+  width: 122px;
+  height: 40px;
 
-.scramble-button {
-  padding: 9px 17px;
+  padding: 0 16px;
 
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
   border-radius: 999px;
 
   background: transparent;
 
+  /*
+    TEXT IS GREY BY DEFAULT
+  */
+  color: #777777;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  letter-spacing: 0.035em;
+
+  white-space: nowrap;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    color 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease,
+    transform 220ms ease;
+}
+
+
+/* =========================================================
+   SOCIAL ICON
+   ALWAYS WHITE
+========================================================= */
+
+.hero-container-2 .social-icon-wrapper {
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  /*
+    ICON STAYS WHITE
+  */
+  color: #f3f3f3;
+
+  transition:
+    transform 220ms ease;
+}
+
+.hero-container-2 .social-icon {
+  width: 15px;
+  height: 15px;
+
+  display: block;
+
+  flex-shrink: 0;
+
+  /*
+    SVG ICON STAYS WHITE
+  */
+  color: #f3f3f3;
+}
+
+
+/* =========================================================
+   SOCIAL LABEL
+========================================================= */
+
+.hero-container-2 .social-label {
+  display: block;
+
+  line-height: 1;
+
+  /*
+    TEXT GREY BY DEFAULT
+  */
+  color: #777777;
+
+  transition: color 220ms ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.hero-container-2 .scramble-button:hover {
+  /*
+    ONLY THE TEXT CHANGES TO WHITE
+  */
+  color: #f3f3f3;
+
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.32
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  transform: translateY(-2px);
+}
+
+
+/*
+   IMPORTANT:
+   Keep icon white on hover too.
+*/
+
+.hero-container-2
+.scramble-button:hover
+.social-icon-wrapper {
+  color: #ffffff;
+
+  transform: scale(1.08);
+}
+
+.hero-container-2
+.scramble-button:hover
+.social-icon {
+  color: #ffffff;
+}
+
+
+/*
+   Scrambled text inherits the
+   hover white color.
+*/
+
+.hero-container-2
+.scramble-button:hover
+.social-label {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.hero-container-2 .scramble-button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   CONTAINER 3
+   FEATURED PROJECTS
+========================================================= */
+
+.hero-container-3 {
+  width: 100%;
+}
+
+
+/* =========================================================
+   FEATURED PROJECTS
+========================================================= */
+
+.hero-container-3 .featured-projects {
+  position: relative;
+
+  width: 100%;
+
+  left: auto;
+  right: auto;
+  bottom: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    2fr
+    1fr;
+
+  gap: 10px;
+}
+
+
+/* =========================================================
+   GENERIC SCRAMBLE BUTTON
+========================================================= */
+
+.scramble-button {
+  width: 100%;
+
+  height: 31px;
+
+  padding:
+    0
+    10px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: #777;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease;
+}
+
+.scramble-button:hover {
+  color: #eee;
+
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.4
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+}
+
+
+/* =========================================================
+   FEATURED PROJECTS
+========================================================= */
+
+.featured-projects {
+  position: relative;
+
+  z-index: 4;
+
+  left: auto;
+  right: auto;
+  bottom: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    2fr
+    1fr;
+
+  gap: 10px;
+}
+
+
+/* =========================================================
+   FEATURED CARD
+========================================================= */
+
+.featured-card {
+  position: relative;
+
+  min-height: 140px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.13
+    );
+
+  border-radius: 20px;
+
+  background: #111;
+}
+
+
+/* =========================================================
+   SIDE PROJECT CARDS
+========================================================= */
+
+.featured-card-side {
+  padding: 20px;
+
+  opacity: 0.42;
+
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.featured-card-side:hover {
+  opacity: 0.8;
+
+  transform:
+    translateY(-3px);
+}
+
+.featured-card-number {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  color: #555;
+}
+
+.featured-card-side h3 {
+  margin:
+    25px
+    0
+    7px;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
   color: #aaa;
+}
+
+.featured-card-side p {
+  max-width: 135px;
+
+  margin: 0;
+
+  font-size: 9px;
+
+  line-height: 1.4;
+
+  color: #666;
+}
+
+.featured-card-link {
+  position: absolute;
+
+  bottom: 17px;
+
+  left: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 30px;
+
+  height: 30px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
+  border-radius: 50%;
+
+  color: #999;
+}
+
+
+/* =========================================================
+   CENTER FEATURED CARD
+========================================================= */
+
+.featured-card-main {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  background: #191919;
+
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+}
+
+
+/* =========================================================
+   FEATURED PROJECT VISUAL
+========================================================= */
+
+.featured-project-image {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 140px;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      #555 0,
+      #303030 25%,
+      #191919 65%,
+      #121212 100%
+    );
+}
+
+.featured-image-mark {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 90px;
+
+  height: 90px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+
+  border-radius: 50%;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 16px;
+
+  color: #ccc;
+
+  transform:
+    rotate(-8deg);
+}
+
+
+/* =========================================================
+   FEATURED PROJECT CONTENT
+========================================================= */
+
+.featured-project-content {
+  padding: 20px;
+}
+
+.featured-project-meta {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 7px;
+
+  color: #777;
+}
+
+.featured-project-content h3 {
+  margin:
+    12px
+    0
+    7px;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+  color: #eee;
+}
+
+.featured-project-content p {
+  max-width: 210px;
+
+  margin: 0;
+
+  font-size: 9px;
+
+  line-height: 1.4;
+
+  color: #888;
+}
+
+.featured-project-content button {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 16px;
+
+  padding:
+    8px
+    14px;
+
+  border: 0;
+
+  border-radius: 999px;
+
+  background: #f2f2f2;
+
+  color: #111;
+
+  font-size: 8px;
 
   cursor: pointer;
 }
 
-.featured-projects {
-  position: absolute;
-
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
-
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 12px;
+.featured-project-content button span {
+  transition:
+    transform 200ms ease;
 }
 
-.featured-card {
-  min-height: 150px;
-
-  padding: 20px;
-
-  border: 1px solid var(--border);
-  border-radius: 20px;
-
-  color: var(--muted);
+.featured-project-content button:hover span {
+  transform:
+    translateX(3px);
 }
 
-.featured-main {
-  color: var(--text);
-}
+
+/* =========================================================
+   GENERIC SECTIONS
+========================================================= */
 
 .about-section,
 .toolchain-section,
@@ -192,21 +1187,43 @@ button {
 .contact-section {
   min-height: 700px;
 
-  padding: 100px 40px;
+  padding:
+    100px
+    42px;
 
-  border-bottom: 1px solid var(--border);
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
 }
+
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
 
 .section-heading {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
   gap: 40px;
 }
 
 .section-heading > span {
-  font-family: monospace;
-  font-size: 11px;
-  color: var(--muted);
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  color: #777;
 }
 
 .section-heading > p {
@@ -214,20 +1231,38 @@ button {
 
   margin: 0;
 
-  color: var(--muted);
+  color: #858585;
 }
 
 .section-heading h2 {
   margin: 0;
 
-  font-size: clamp(70px, 10vw, 140px);
+  font-size:
+    clamp(
+      70px,
+      10vw,
+      140px
+    );
+
   font-weight: 500;
+
+  line-height: 0.9;
+
   letter-spacing: -0.07em;
 }
 
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 0.8fr;
+
+  grid-template-columns:
+    1fr
+    0.8fr;
+
   gap: 50px;
 
   margin-top: 80px;
@@ -235,21 +1270,35 @@ button {
 
 .about-skills {
   display: flex;
+
   flex-direction: column;
+
   gap: 12px;
 }
 
 .placeholder-card {
   padding: 25px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
   border-radius: 18px;
 }
 
 .placeholder-card span {
-  font-family: monospace;
-  font-size: 11px;
-  color: var(--muted);
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  color: #777;
 }
 
 .placeholder-card p {
@@ -258,22 +1307,49 @@ button {
 
 .about-side {
   display: flex;
+
   flex-direction: column;
+
   gap: 20px;
 }
 
+
+/* =========================================================
+   TERMINAL
+========================================================= */
+
 .terminal {
-  border: 1px solid var(--border);
-  border-radius: 18px;
   overflow: hidden;
 
-  font-family: monospace;
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
+  border-radius: 18px;
+
+  font-family:
+    "Courier New",
+    monospace;
 }
 
 .terminal-header {
-  padding: 12px 15px;
+  padding:
+    12px
+    15px;
 
-  border-bottom: 1px solid var(--border);
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
 
   color: #555;
 }
@@ -282,6 +1358,7 @@ button {
   padding: 20px;
 
   font-size: 12px;
+
   line-height: 1.7;
 }
 
@@ -289,17 +1366,34 @@ button {
   min-height: 300px;
 
   display: grid;
+
   place-items: center;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
   border-radius: 18px;
 
   color: #555;
 }
 
+
+/* =========================================================
+   TOOLCHAIN
+========================================================= */
+
 .toolchain-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
   gap: 40px;
 
   margin-top: 80px;
@@ -307,22 +1401,36 @@ button {
 
 .toolchain-grid > div {
   display: flex;
+
   flex-direction: column;
+
   gap: 10px;
 }
 
 .toolchain-grid > div > span {
   margin-bottom: 10px;
 
-  font-family: monospace;
-  font-size: 11px;
-  color: var(--muted);
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  color: #777;
 }
 
 .tool-node {
   padding: 15px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
   border-radius: 12px;
 
   background: transparent;
@@ -332,61 +1440,132 @@ button {
   text-align: left;
 }
 
+
+/* =========================================================
+   PROJECTS SECTION
+========================================================= */
+
 .project-list {
   margin-top: 70px;
 
-  border-top: 1px solid var(--border);
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
 }
 
 .project-row {
   display: grid;
-  grid-template-columns: 70px 1.5fr 1fr 100px;
+
+  grid-template-columns:
+    70px
+    1.5fr
+    1fr
+    100px;
+
   align-items: center;
 
   min-height: 90px;
 
-  border-bottom: 1px solid var(--border);
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
 }
 
 .project-row h3 {
   margin: 0;
 
   font-size: 22px;
+
   font-weight: 400;
 }
 
 .project-row span {
-  font-family: monospace;
+  font-family:
+    "Courier New",
+    monospace;
+
   font-size: 10px;
-  color: var(--muted);
+
+  color: #777;
 }
+
+
+/* =========================================================
+   JOURNEY
+========================================================= */
 
 .journey-list {
   margin-top: 70px;
 
-  border-top: 1px solid var(--border);
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
 }
 
 .journey-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+
+  grid-template-columns:
+    1fr
+    1fr
+    2fr;
+
   align-items: center;
 
   min-height: 70px;
 
-  border-bottom: 1px solid var(--border);
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
 
-  font-family: monospace;
-  font-size: 11px;
-  color: #999;
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  color: #888;
 }
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
 
 .contact-section h2 {
   margin-top: 100px;
 
-  font-size: clamp(70px, 10vw, 140px);
+  font-size:
+    clamp(
+      70px,
+      10vw,
+      140px
+    );
+
   font-weight: 500;
+
   line-height: 0.85;
+
   letter-spacing: -0.07em;
 }
 
@@ -395,31 +1574,239 @@ button {
 
   margin-top: 50px;
 
-  padding: 14px 22px;
+  padding:
+    14px
+    22px;
 
-  border: 1px solid var(--border);
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
   border-radius: 999px;
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 700px) {
+
+  /* -------------------------------------------------------
+     FRAME
+  ------------------------------------------------------- */
+
   .portfolio-frame {
-    width: calc(100% - 20px);
-    border-radius: 20px;
+    width:
+      calc(
+        100% - 20px
+      );
+
+    margin: 10px;
+  }
+
+
+  /* -------------------------------------------------------
+     NAVBAR
+  ------------------------------------------------------- */
+
+  .navbar {
+    grid-template-columns:
+      1fr
+      auto;
+
+    padding:
+      25px
+      18px
+      0;
   }
 
   .nav-links {
     display: none;
   }
 
+
+  /* -------------------------------------------------------
+     HERO
+  ------------------------------------------------------- */
+
   .hero {
-    padding: 50px 20px;
+    height: auto;
+
+    min-height: auto;
+
+    padding:
+      0
+      18px
+      25px;
+
+    overflow: visible;
   }
 
-  .hero-title span:last-child {
-    text-align: left;
+
+  /* -------------------------------------------------------
+     MAIN HERO CONTAINER
+  ------------------------------------------------------- */
+
+  .hero-container-1 {
+    min-height: auto;
+
+    padding-top: 100px;
+
+    justify-content: flex-start;
   }
 
-  .featured-projects {
+
+  /* -------------------------------------------------------
+     CONTAINER 1.1
+  ------------------------------------------------------- */
+
+  .hero-container-1-1 {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .hero-container-1-1-1 {
+    justify-content: flex-start;
+  }
+
+  .hero-container-1-1-2 {
+    justify-content: flex-start;
+
+    align-items: flex-start;
+  }
+
+
+  /* -------------------------------------------------------
+     FASCINATED
+  ------------------------------------------------------- */
+
+  .hero-creative {
+    font-size:
+      clamp(
+        64px,
+        17vw,
+        100px
+      );
+
+    line-height: 0.82;
+  }
+
+
+  /* -------------------------------------------------------
+     CONTAINER 1.2
+  ------------------------------------------------------- */
+
+  .hero-container-1-2 {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    margin-top: 35px;
+  }
+
+  .hero-container-1-2-1 {
+    padding-top: 0;
+  }
+
+  .hero-container-1-2-2 {
+    justify-content: flex-end;
+  }
+
+
+  /* -------------------------------------------------------
+     DESCRIPTION
+  ------------------------------------------------------- */
+
+  .hero-description {
+    width: min(
+      310px,
+      90%
+    );
+
+    font-size: 15px;
+
+    line-height: 1.5;
+  }
+
+
+  /* -------------------------------------------------------
+     DEVELOPER
+  ------------------------------------------------------- */
+
+  .hero-developer {
+    font-size:
+      clamp(
+        64px,
+        17vw,
+        100px
+      );
+
+    line-height: 0.82;
+  }
+
+
+  /* -------------------------------------------------------
+     PROJECT BUTTON
+  ------------------------------------------------------- */
+
+  .hero-project-button {
+    align-self: flex-end;
+  }
+
+  .hero-project-label {
+    width: 145px;
+
+    height: 36px;
+  }
+
+  .hero-project-arrow {
+    width: 36px;
+
+    height: 36px;
+  }
+
+
+  /* -------------------------------------------------------
+     SOCIAL
+  ------------------------------------------------------- */
+
+  .hero-container-2 {
+    padding:
+      45px
+      0
+      35px;
+  }
+
+  .hero-container-2 .social-links {
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    gap: 10px;
+  }
+
+  .hero-container-2 .scramble-button {
+    width: 90px;
+  }
+
+
+  /* -------------------------------------------------------
+     FEATURED PROJECTS
+  ------------------------------------------------------- */
+
+  .hero-container-3 {
+    width: 100%;
+  }
+
+  .featured-projects,
+  .hero-container-3 .featured-projects {
     position: relative;
 
     left: auto;
@@ -428,43 +1815,228 @@ button {
 
     grid-template-columns: 1fr;
 
-    margin-top: 80px;
+    margin-top: 0;
   }
 
-  .hero {
-    min-height: auto;
+  .featured-card-side {
+    display: none;
   }
+
+  .featured-card-main {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -------------------------------------------------------
+     GENERIC SECTIONS
+  ------------------------------------------------------- */
 
   .about-section,
   .toolchain-section,
   .projects-section,
   .journey-section,
   .contact-section {
-    padding: 70px 20px;
+    padding:
+      70px
+      18px;
   }
 
-  .section-heading,
+
+  /* -------------------------------------------------------
+     SECTION HEADINGS
+  ------------------------------------------------------- */
+
+  .section-heading {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -------------------------------------------------------
+     ABOUT
+  ------------------------------------------------------- */
+
   .about-grid {
     grid-template-columns: 1fr;
   }
+
+
+  /* -------------------------------------------------------
+     TOOLCHAIN
+  ------------------------------------------------------- */
 
   .toolchain-grid {
     grid-template-columns: 1fr;
   }
 
+
+  /* -------------------------------------------------------
+     PROJECT LIST
+  ------------------------------------------------------- */
+
   .project-row {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns:
+      40px
+      1fr;
+
     gap: 10px;
-    padding: 20px 0;
+
+    padding:
+      20px
+      0;
   }
 
   .project-row span:nth-last-child(-n + 2) {
     display: none;
   }
 
+
+  /* -------------------------------------------------------
+     JOURNEY
+  ------------------------------------------------------- */
+
   .journey-row {
     grid-template-columns: 1fr;
+
     gap: 8px;
-    padding: 15px 0;
+
+    padding:
+      15px
+      0;
+  }
+
+
+  /* -------------------------------------------------------
+     CONTACT
+  ------------------------------------------------------- */
+
+  .contact-section h2 {
+    margin-top: 70px;
+  }
+}
+
+/* =========================================================
+   HERO TITLE FONT OVERRIDE
+========================================================= */
+
+.hero-creative {
+  font-family: var(--font-saira), "Saira", sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em;
+}
+.hero-developer {
+  font-family: var(--font-chakra), "Chakra Petch", sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+}
+
+/* =========================================================
+   FINAL SOCIAL LINKS OVERRIDE
+   ========================================================= */
+
+.hero-container-2 .social-links {
+  display: flex !important;
+
+  flex-direction: row !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: auto !important;
+
+  column-gap: 38px !important;
+  row-gap: 0 !important;
+
+  flex-wrap: nowrap !important;
+}
+
+.hero-container-2 .scramble-button {
+  flex: 0 0 auto !important;
+
+  width: 122px !important;
+  min-width: 122px !important;
+
+  height: 40px !important;
+}
+
+
+/* =========================================================
+   SOCIAL ICONS
+   ========================================================= */
+
+.hero-container-2 .social-icon-wrapper {
+  flex: 0 0 16px !important;
+
+  width: 16px !important;
+  height: 16px !important;
+
+  color: #ffffff !important;
+}
+
+.hero-container-2 .social-icon {
+  width: 15px !important;
+  height: 15px !important;
+
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   SOCIAL TEXT
+   ========================================================= */
+
+.hero-container-2 .social-label {
+  color: #777777 !important;
+
+  font-size: 10px !important;
+
+  transition: color 220ms ease !important;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.hero-container-2 .scramble-button:hover {
+  color: #ffffff !important;
+}
+
+.hero-container-2 .scramble-button:hover .social-label {
+  color: #ffffff !important;
+}
+
+.hero-container-2 .scramble-button:hover .social-icon-wrapper {
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   DESKTOP SOCIAL SPACING
+   ========================================================= */
+
+@media (min-width: 701px) {
+  .hero-container-2 .social-links {
+    column-gap: 38px !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .hero-container-2 .social-links {
+    width: 100% !important;
+
+    flex-wrap: wrap !important;
+
+    column-gap: 18px !important;
+    row-gap: 12px !important;
+  }
+
+  .hero-container-2 .scramble-button {
+    width: 122px !important;
+    min-width: 122px !important;
   }
 }

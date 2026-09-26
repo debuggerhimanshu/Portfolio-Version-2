@@ -2,9 +2,8 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="brand">
-        Himanshu
-        <br />
-        Ranjan
+        <span>Himanshu</span>
+        <span>Ranjan</span>
       </div>
 
       <div className="nav-links">
@@ -15,7 +14,7 @@ export default function Navbar() {
       </div>
 
       <div className="language">
-        <span>En</span>
+        En
       </div>
     </nav>
   );
